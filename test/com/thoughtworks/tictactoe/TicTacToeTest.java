@@ -49,4 +49,11 @@ public class TicTacToeTest {
         verify(board, times(2)).drawBoard();
     }
 
+    @Test
+    public void shouldPrintWinningPlayerNumber(){
+        when(reader.readLine()).thenReturn("1");
+        when(board.isWin()).thenReturn(true);
+        game.play();
+        verify(printStream).print(contains(" wins"));
+    }
 }

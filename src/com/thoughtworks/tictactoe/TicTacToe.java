@@ -1,6 +1,5 @@
 package com.thoughtworks.tictactoe;
 
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,29 +20,38 @@ public class TicTacToe {
     }
 
     public void play() {
-        Boolean continuePlayersTurn;
         board.drawBoard();
         while (keepPlaying) {
             for (Player player : players) {
-                continuePlayersTurn = true;
-                while (continuePlayersTurn) {
-                    try {
-                        board.move(player.readMove(), player.symbol);
-                        continuePlayersTurn = false;
-                    } catch (IllegalMove illegalMove) {
-                        printStream.println("Location already taken. Try again.");
-                    }
-                }
-                if (board.isWin()){
-                    return;
-                }
-                if (board.isDraw()) {
-                    board.drawBoard();
-                    printStream.println("Game is a draw");
-                    return;
-                }
+                playersTurn(player);
                 board.drawBoard();
+                if(isEndOfGame(player.playerNumber)) return;
             }
         }
+    }
+
+    private void playersTurn(Player player) {
+        Boolean continuePlayersTurn;
+        continuePlayersTurn = true;
+        while (continuePlayersTurn) {
+            try {
+                board.move(player.readMove(), player.symbol);
+                continuePlayersTurn = false;
+            } catch (IllegalMove illegalMove) {
+                printStream.println("Location already taken. Try again.");
+            }
+        }
+    }
+
+    private boolean isEndOfGame(int playerNumber) {
+        if (board.isWin()){
+            printStream.print("Player " + playerNumber + " wins\n");
+            return true;
+        }
+        if (board.isDraw()) {
+            printStream.println("Game is a draw");
+            return true;
+        }
+        return false;
     }
 }

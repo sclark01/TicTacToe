@@ -7,14 +7,14 @@ public class Player {
     private TicTacBufferedReader reader;
     private PrintStream printStream;
     private static int playerCount;
-    private final int playerNumber;
+    public final int playerNumber;
     public final String symbol;
 
     public Player(PrintStream printStream, TicTacBufferedReader reader, String symbol) {
         this.printStream = printStream;
         this.reader = reader;
         this.symbol = symbol;
-        playerNumber = playerCount;
+        playerNumber = playerCount + 1;
         playerCount++;
     }
 
@@ -28,6 +28,6 @@ public class Player {
     }
 
     private void promptPlayer() {
-        printStream.println("Player " + (playerNumber + 1) + " make your move");
+        printStream.println("Player " + playerNumber + " make your move");
     }
 }
