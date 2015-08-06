@@ -7,13 +7,11 @@ public class Board {
     private PrintStream printStream;
     private String[] board;
     private int spaces_available;
-    private int[] possibleNeighbors;
 
     public Board(PrintStream printStream) {
         this.printStream = printStream;
         board = new String[BOARD_SIZE];
         spaces_available = BOARD_SIZE;
-        possibleNeighbors = new int[BOARD_SIZE];
         init();
     }
 
@@ -38,10 +36,6 @@ public class Board {
     private void init() {
         for (int i = 0; i < BOARD_SIZE; i++) {
             board[i] = " ";
-        }
-        int neighbor = (BOARD_SIZE / 2) * -1;
-        for (int j = 0; j < BOARD_SIZE; j++){
-            possibleNeighbors[j] = neighbor++;
         }
     }
 
