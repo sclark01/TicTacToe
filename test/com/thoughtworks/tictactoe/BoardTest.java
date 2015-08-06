@@ -59,4 +59,36 @@ public class BoardTest {
         assertEquals(true, board.isDraw());
     }
 
+    @Test
+    public void shouldDetectAWinWhenThreeOfTheSameSymbolsAreInARow() throws IllegalMove {
+        for (int i = 0; i < 3; i++){
+            board.move(i, "X");
+        }
+        assertEquals(true, board.isWin());
+    }
+
+    @Test
+    public void shouldNotDetectAWinWhenThreeDifferentSymbolsAreInARow() throws IllegalMove {
+        board.move(0, "X");
+        board.move(1, "Y");
+        board.move(2, "Y");
+        assertEquals(false, board.isWin());
+    }
+
+
+    @Test
+    public void shouldDetectAWinWhenThreeOfTheSameSymbolsAreInAColumn() throws IllegalMove {
+        board.move(0, "X");
+        board.move(3, "X");
+        board.move(6, "X");
+        assertEquals(true, board.isWin());
+    }
+
+    @Test
+    public void shouldDetectAWinWhenThreeOfTheSameSymbolsAreInADiagonal() throws IllegalMove {
+        board.move(0, "X");
+        board.move(4, "X");
+        board.move(8, "X");
+        assertEquals(true, board.isWin());
+    }
 }

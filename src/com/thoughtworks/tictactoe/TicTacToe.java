@@ -34,14 +34,16 @@ public class TicTacToe {
                         printStream.println("Location already taken. Try again.");
                     }
                 }
-                if(board.isDraw()) {
+                if (board.isWin()){
+                    return;
+                }
+                if (board.isDraw()) {
                     board.drawBoard();
+                    printStream.println("Game is a draw");
                     return;
                 }
                 board.drawBoard();
             }
-//            keepPlaying = !board.isDraw();
-//            System.out.println(keepPlaying);
         }
     }
 }
