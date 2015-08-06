@@ -1,17 +1,15 @@
 package com.thoughtworks.tictactoe;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Board {
     public static final int BOARD_SIZE = 9;
     private PrintStream printStream;
-    private List<String> board;
+    private String[] board;
 
     public Board(PrintStream printStream) {
         this.printStream = printStream;
-        board = new ArrayList<>();
+        board = new String[BOARD_SIZE];
         init();
     }
 
@@ -28,15 +26,22 @@ public class Board {
             if (i % 3 != 0) {
                 output += "|";
             }
-            output += " " + board.get(i) + " ";
+            output += " " + board[i] + " ";
         }
         return output;
     }
 
     private void init() {
         for (int i = 0; i < BOARD_SIZE; i++) {
-            board.add(" ");
+            board[i] = " ";
         }
     }
 
+    public void move(int i, String symbol) {
+        board[i] = symbol;
+    }
+
+    public boolean isAvailable(int i) {
+        return board[i].equals(" ");
+    }
 }

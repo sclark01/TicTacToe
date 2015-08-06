@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -28,6 +29,13 @@ public class BoardTest {
                 "   |   |   \n" +
                 "------------\n" +
                 "   |   |   ");
+    }
+
+    @Test
+    public void shouldAddPlayerToDesiredSpot(){
+        assertEquals(true, board.isAvailable(1));
+        board.move(1, "X");
+        assertEquals(false, board.isAvailable(1));
     }
 
 }
