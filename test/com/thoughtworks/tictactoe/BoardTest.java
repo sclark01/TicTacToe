@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -32,10 +33,22 @@ public class BoardTest {
     }
 
     @Test
-    public void shouldAddPlayerToDesiredSpot(){
+    public void shouldAddPlayerToDesiredSpot() throws IllegalMove {
         assertEquals(true, board.isAvailable(1));
         board.move(1, "X");
         assertEquals(false, board.isAvailable(1));
+    }
+
+    @Test
+    public void shouldReturnFalseIfSpaceIsTaken() throws IllegalMove {
+        board.move(1, "X");
+        assertEquals(false, board.isAvailable(1));
+    }
+
+    @Test (expected = IllegalMove.class)
+    public void shouldThrowErrorWhenUserTriesToMoveToOccupiedSpace() throws IllegalMove {
+        board.move(1, "X");
+        board.move(1, "X");
     }
 
 }

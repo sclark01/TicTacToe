@@ -1,23 +1,41 @@
 package com.thoughtworks.tictactoe;
 
 import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TicTacToe {
     private Board board;
-    private Player player1;
-    private Player player2;
+    private Boolean keepPlaying;
+    private PrintStream printStream;
+    private List<Player> players;
 
-    public TicTacToe(Board board) {
+    public TicTacToe(Board board, TicTacBufferedReader reader, PrintStream printStream) {
         this.board = board;
-        player1 = new Player(System.out, new TicTacBufferedReader(new InputStreamReader(System.in)), "X");
-        player2 = new Player(System.out, new TicTacBufferedReader(new InputStreamReader(System.in)), "O");
+        this.printStream = printStream;
+        players = new ArrayList<>();
+        players.add(new Player(printStream, reader, "X"));
+        players.add(new Player(printStream, reader, "O"));
+        keepPlaying = true;
     }
 
     public void play() {
-        board.drawBoard();
-        board.move(player1.readMove(), player1.symbol);
-        board.drawBoard();
-        board.move(player2.readMove(), player2.symbol);
-        board.drawBoard();
-    }
+        Boolean continuePlayersTurn;
+      //  while (keepPlaying) {
+            board.drawBoard();
+            for (Player player : players) {
+                continuePlayersTurn = true;
+                while (continuePlayersTurn) {
+                    try {
+                        board.move(player.readMove(), player.symbol);
+                        continuePlayersTurn = false;
+                    } catch (IllegalMove illegalMove) {
+                        printStream.println("Location already taken. Try again.");
+                    }
+                }
+                board.drawBoard();
+            }
+        }
+    //}
 }
