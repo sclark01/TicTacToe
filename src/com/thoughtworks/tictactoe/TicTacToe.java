@@ -22,8 +22,8 @@ public class TicTacToe {
 
     public void play() {
         Boolean continuePlayersTurn;
-      //  while (keepPlaying) {
-            board.drawBoard();
+        board.drawBoard();
+        while (keepPlaying) {
             for (Player player : players) {
                 continuePlayersTurn = true;
                 while (continuePlayersTurn) {
@@ -34,8 +34,14 @@ public class TicTacToe {
                         printStream.println("Location already taken. Try again.");
                     }
                 }
+                if(board.isDraw()) {
+                    board.drawBoard();
+                    return;
+                }
                 board.drawBoard();
             }
+//            keepPlaying = !board.isDraw();
+//            System.out.println(keepPlaying);
         }
-    //}
+    }
 }

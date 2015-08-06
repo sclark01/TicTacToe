@@ -51,4 +51,12 @@ public class BoardTest {
         board.move(1, "X");
     }
 
+    @Test
+    public void shouldReturnTrueWhenBoardIsFull() throws IllegalMove {
+        for (int i = 0; i < 9; i++) {
+            board.move(i, "X");
+        }
+        assertEquals(true, board.isDraw());
+    }
+
 }

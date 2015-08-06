@@ -6,10 +6,12 @@ public class Board {
     public static final int BOARD_SIZE = 9;
     private PrintStream printStream;
     private String[] board;
+    private int spaces_available;
 
     public Board(PrintStream printStream) {
         this.printStream = printStream;
         board = new String[BOARD_SIZE];
+        spaces_available = BOARD_SIZE;
         init();
     }
 
@@ -40,9 +42,14 @@ public class Board {
     public void move(int i, String symbol) throws IllegalMove {
         if(!isAvailable(i)) throw new IllegalMove("Space Taken");
         board[i] = symbol;
+        spaces_available--;
     }
 
     public boolean isAvailable(int i) {
         return board[i].equals(" ");
+    }
+
+    public boolean isDraw() {
+        return spaces_available <= 0;
     }
 }
