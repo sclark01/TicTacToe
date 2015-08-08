@@ -2,7 +2,6 @@ package com.thoughtworks.tictactoe;
 
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.PrintStream;
@@ -22,12 +21,13 @@ public class TicTacToeTest {
         board = mock(Board.class);
         printStream = mock(PrintStream.class);
         reader = mock(TicTacBufferedReader.class);
-        game = new TicTacToe(board, reader, printStream);
+        game = new TicTacToe(board, printStream, new Player(printStream, reader, "X"), new Player(printStream, reader, "O"));
     }
 
-    @Ignore
+    @Test
     public void shouldCallDrawBoard(){
         when(reader.readLine()).thenReturn("1", "2");
+        when(board.isWin()).thenReturn(true);
         game.play();
         verify(board, atLeastOnce()).drawBoard();
     }
@@ -35,7 +35,7 @@ public class TicTacToeTest {
     @Test
     public void gameShouldContinueUntilBoardIsFull(){
         Board board = new Board(printStream);
-        TicTacToe game = new TicTacToe(board, reader, printStream);
+        TicTacToe game = new TicTacToe(board, printStream, new Player(printStream, reader, "X"), new Player(printStream, reader, "O"));
         when(reader.readLine()).thenReturn("1", "2", "4", "8", "5", "6", "3", "7", "9");
         game.play();
         assertEquals(true, board.isDraw());

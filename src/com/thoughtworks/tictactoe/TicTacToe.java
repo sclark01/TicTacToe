@@ -10,12 +10,13 @@ public class TicTacToe {
     private PrintStream printStream;
     private List<Player> players;
 
-    public TicTacToe(Board board, TicTacBufferedReader reader, PrintStream printStream) {
+    public TicTacToe(Board board, PrintStream printStream, Player playerOne, Player playerTwo) {
         this.board = board;
         this.printStream = printStream;
         players = new ArrayList<>();
-        players.add(new Player(printStream, reader, "X"));
-        players.add(new Player(printStream, reader, "O"));
+        players.add(playerOne);
+        players.add(playerTwo);
+        //players.add(new ComputerPlayer(printStream, reader, "O"));
         keepPlaying = true;
     }
 

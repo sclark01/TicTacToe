@@ -4,7 +4,8 @@ import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) {
-        TicTacToe game = new TicTacToe(new Board(System.out), new TicTacBufferedReader(new InputStreamReader(System.in)), System.out);
+        final TicTacBufferedReader reader = new TicTacBufferedReader(new InputStreamReader(System.in));
+        TicTacToe game = new TicTacToe(new Board(System.out), System.out, new Player(System.out, reader, "X"), new Player(System.out, reader, "O"));
         game.play();
     }
 }
