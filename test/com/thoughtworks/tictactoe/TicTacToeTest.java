@@ -56,4 +56,5 @@ public class TicTacToeTest {
         game.play();
         verify(printStream).print(contains(" wins"));
     }
+
 }

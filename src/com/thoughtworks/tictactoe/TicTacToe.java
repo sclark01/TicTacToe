@@ -36,7 +36,7 @@ public class TicTacToe {
         continuePlayersTurn = true;
         while (continuePlayersTurn) {
             try {
-                board.move(player.readMove(), player.symbol);
+                board.mark(player.readMove(), player.symbol);
                 continuePlayersTurn = false;
             } catch (IllegalMove illegalMove) {
                 printStream.println("Location already taken. Try again.");

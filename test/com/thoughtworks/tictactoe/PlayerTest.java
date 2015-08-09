@@ -26,7 +26,7 @@ public class PlayerTest {
     public void shouldPromptPlayerToMakeAMove(){
         when(reader.readLine()).thenReturn("1");
         player.readMove();
-        verify(printStream).println(contains("make your move"));
+        verify(printStream).println(contains("make your addToGroup"));
     }
 
     @Test

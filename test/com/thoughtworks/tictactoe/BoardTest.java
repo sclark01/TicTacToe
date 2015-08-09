@@ -34,26 +34,26 @@ public class BoardTest {
     @Test
     public void shouldAddPlayerToDesiredSpot() throws IllegalMove {
         assertEquals(true, board.isAvailable(1));
-        board.move(1, "X");
+        board.mark(1, "X");
         assertEquals(false, board.isAvailable(1));
     }
 
     @Test
     public void shouldReturnFalseIfSpaceIsTaken() throws IllegalMove {
-        board.move(1, "X");
+        board.mark(1, "X");
         assertEquals(false, board.isAvailable(1));
     }
 
     @Test (expected = IllegalMove.class)
     public void shouldThrowErrorWhenUserTriesToMoveToOccupiedSpace() throws IllegalMove {
-        board.move(1, "X");
-        board.move(1, "X");
+        board.mark(1, "X");
+        board.mark(1, "X");
     }
 
     @Test
     public void shouldReturnTrueWhenBoardIsFull() throws IllegalMove {
         for (int i = 0; i < 9; i++) {
-            board.move(i, "X");
+            board.mark(i, "X");
         }
         assertEquals(true, board.isDraw());
     }
@@ -61,33 +61,33 @@ public class BoardTest {
     @Test
     public void shouldDetectAWinWhenThreeOfTheSameSymbolsAreInARow() throws IllegalMove {
         for (int i = 0; i < 3; i++){
-            board.move(i, "X");
+            board.mark(i, "X");
         }
         assertEquals(true, board.isWin());
     }
 
     @Test
     public void shouldNotDetectAWinWhenThreeDifferentSymbolsAreInARow() throws IllegalMove {
-        board.move(0, "X");
-        board.move(1, "Y");
-        board.move(2, "Y");
+        board.mark(0, "X");
+        board.mark(1, "Y");
+        board.mark(2, "Y");
         assertEquals(false, board.isWin());
     }
 
 
     @Test
     public void shouldDetectAWinWhenThreeOfTheSameSymbolsAreInAColumn() throws IllegalMove {
-        board.move(0, "X");
-        board.move(3, "X");
-        board.move(6, "X");
+        board.mark(0, "X");
+        board.mark(3, "X");
+        board.mark(6, "X");
         assertEquals(true, board.isWin());
     }
 
     @Test
     public void shouldDetectAWinWhenThreeOfTheSameSymbolsAreInADiagonal() throws IllegalMove {
-        board.move(0, "X");
-        board.move(4, "X");
-        board.move(8, "X");
+        board.mark(0, "X");
+        board.mark(4, "X");
+        board.mark(8, "X");
         assertEquals(true, board.isWin());
     }
 }

@@ -28,6 +28,6 @@ public class Player {
     }
 
     private void promptPlayer() {
-        printStream.println("Player " + playerNumber + " make your move");
+        printStream.println("Player " + playerNumber + " make your addToGroup");
     }
 }

@@ -39,7 +39,7 @@ public class Board {
         }
     }
 
-    public void move(int i, String symbol) throws IllegalMove {
+    public void mark(int i, String symbol) throws IllegalMove {
         if(!isAvailable(i)) throw new IllegalMove("Space Taken");
         board[i] = symbol;
         spaces_available--;
