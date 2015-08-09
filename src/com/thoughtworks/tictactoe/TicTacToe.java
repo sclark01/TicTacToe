@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TicTacToe {
-    private Board board;
+    private TicTacToeBoard board;
     private Boolean keepPlaying;
     private PrintStream printStream;
     private List<Player> players;
 
-    public TicTacToe(Board board, PrintStream printStream, Player playerOne, Player playerTwo) {
+    public TicTacToe(TicTacToeBoard board, PrintStream printStream, Player playerOne, Player playerTwo) {
         this.board = board;
         this.printStream = printStream;
         players = new ArrayList<>();

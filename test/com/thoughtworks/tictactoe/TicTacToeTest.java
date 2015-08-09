@@ -11,14 +11,14 @@ import static org.mockito.Mockito.*;
 
 public class TicTacToeTest {
 
-    private Board board;
+    private TicTacToeBoard board;
     private PrintStream printStream;
     private TicTacBufferedReader reader;
     private TicTacToe game;
 
     @Before
     public void setUp(){
-        board = mock(Board.class);
+        board = mock(TicTacToeBoard.class);
         printStream = mock(PrintStream.class);
         reader = mock(TicTacBufferedReader.class);
         game = new TicTacToe(board, printStream, new Player(printStream, reader, "X"), new Player(printStream, reader, "O"));
@@ -34,7 +34,8 @@ public class TicTacToeTest {
 
     @Test
     public void gameShouldContinueUntilBoardIsFull(){
-        Board board = new Board(printStream);
+        GroupOfThreeLocations mockGroup = mock(GroupOfThreeLocations.class);
+        TicTacToeBoard board = new TicTacToeBoard(printStream, mockGroup, mockGroup, mockGroup, mockGroup, mockGroup, mockGroup, mockGroup, mockGroup);
         TicTacToe game = new TicTacToe(board, printStream, new Player(printStream, reader, "X"), new Player(printStream, reader, "O"));
         when(reader.readLine()).thenReturn("1", "2", "4", "8", "5", "6", "3", "7", "9");
         game.play();

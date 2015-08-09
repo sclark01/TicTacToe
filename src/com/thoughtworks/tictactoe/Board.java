@@ -62,93 +62,93 @@ public class Board {
     }
 
     private boolean checkForwardSlash() {
-        int numberOfConsecutiveSymbols = 0;
-        String previousSymbol = board[2];
-
-        for (int i = 2; i < BOARD_SIZE - 1; i += 2) {
-            if (previousSymbol.equals(board[i])) {
-                numberOfConsecutiveSymbols++;
-            } else {
-                numberOfConsecutiveSymbols = 0;
-            }
-            if (previousSymbol.equals(" ")) {
-                numberOfConsecutiveSymbols = 0;
-            }
-            if (numberOfConsecutiveSymbols == 3) {
-                return true;
-            }
-            previousSymbol = board[i];
-        }
+//        int numberOfConsecutiveSymbols = 0;
+//        String previousSymbol = board[2];
+//
+//        for (int i = 2; i < BOARD_SIZE - 1; i += 2) {
+//            if (previousSymbol.equals(board[i])) {
+//                numberOfConsecutiveSymbols++;
+//            } else {
+//                numberOfConsecutiveSymbols = 0;
+//            }
+//            if (previousSymbol.equals(" ")) {
+//                numberOfConsecutiveSymbols = 0;
+//            }
+//            if (numberOfConsecutiveSymbols == 3) {
+//                return true;
+//            }
+//            previousSymbol = board[i];
+//        }
         return false;
     }
 
     private boolean checkBackSlash() {
-        int numberOfConsecutiveSymbols = 1;
-        String previousSymbol = board[0];
-
-        for (int i = 4; i < BOARD_SIZE; i += 4) {
-            if (previousSymbol.equals(board[i])) {
-                numberOfConsecutiveSymbols++;
-            } else {
-                numberOfConsecutiveSymbols = 1;
-            }
-            if (previousSymbol.equals(" ")) {
-                numberOfConsecutiveSymbols = 1;
-            }
-            if (numberOfConsecutiveSymbols == 3) {
-                return true;
-            }
-            previousSymbol = board[i];
-        }
+//        int numberOfConsecutiveSymbols = 1;
+//        String previousSymbol = board[0];
+//
+//        for (int i = 4; i < BOARD_SIZE; i += 4) {
+//            if (previousSymbol.equals(board[i])) {
+//                numberOfConsecutiveSymbols++;
+//            } else {
+//                numberOfConsecutiveSymbols = 1;
+//            }
+//            if (previousSymbol.equals(" ")) {
+//                numberOfConsecutiveSymbols = 1;
+//            }
+//            if (numberOfConsecutiveSymbols == 3) {
+//                return true;
+//            }
+//            previousSymbol = board[i];
+//        }
         return false;
     }
 
     private boolean checkHorizontal() {
-        int numberOfConsecutiveSymbols = 1;
-        String previousSymbol = board[0];
-        for (int i = 1; i < BOARD_SIZE; i++) {
-            if(previousSymbol.equals(board[i])){
-                numberOfConsecutiveSymbols++;
-            } else {
-                numberOfConsecutiveSymbols = 1;
-            }
-            if (i % 3 == 0 || previousSymbol.equals(" ")) {
-                numberOfConsecutiveSymbols = 1;
-            }
-            if (numberOfConsecutiveSymbols == 3){
-                return true;
-            }
-            previousSymbol = board[i];
-
-        }
+//        int numberOfConsecutiveSymbols = 1;
+//        String previousSymbol = board[0];
+//        for (int i = 1; i < BOARD_SIZE; i++) {
+//            if(previousSymbol.equals(board[i])){
+//                numberOfConsecutiveSymbols++;
+//            } else {
+//                numberOfConsecutiveSymbols = 1;
+//            }
+//            if (i % 3 == 0 || previousSymbol.equals(" ")) {
+//                numberOfConsecutiveSymbols = 1;
+//            }
+//            if (numberOfConsecutiveSymbols == 3){
+//                return true;
+//            }
+//            previousSymbol = board[i];
+//
+//        }
         return false;
     }
 
     private boolean checkVeritcal() {
-        int numberOfConsecutiveSymbols;
-        String previousSymbol;
-        int columnStart;
-
-        for (int i = 0; i < 3; i++) {
-            columnStart = i;
-            numberOfConsecutiveSymbols = 0;
-            previousSymbol = board[columnStart];
-            for (int j = columnStart; j < BOARD_SIZE; j += 3) {
-                if (previousSymbol.equals(board[j])) {
-                    numberOfConsecutiveSymbols++;
-                } else {
-                    numberOfConsecutiveSymbols = 0;
-                }
-                if (previousSymbol.equals(" ")) {
-                    numberOfConsecutiveSymbols = 0;
-                }
-                if (numberOfConsecutiveSymbols == 3) {
-                    return true;
-                }
-                previousSymbol = board[j];
-            }
-
-        }
+//        int numberOfConsecutiveSymbols;
+//        String previousSymbol;
+//        int columnStart;
+//
+//        for (int i = 0; i < 3; i++) {
+//            columnStart = i;
+//            numberOfConsecutiveSymbols = 0;
+//            previousSymbol = board[columnStart];
+//            for (int j = columnStart; j < BOARD_SIZE; j += 3) {
+//                if (previousSymbol.equals(board[j])) {
+//                    numberOfConsecutiveSymbols++;
+//                } else {
+//                    numberOfConsecutiveSymbols = 0;
+//                }
+//                if (previousSymbol.equals(" ")) {
+//                    numberOfConsecutiveSymbols = 0;
+//                }
+//                if (numberOfConsecutiveSymbols == 3) {
+//                    return true;
+//                }
+//                previousSymbol = board[j];
+//            }
+//
+//        }
         return false;
     }
 
